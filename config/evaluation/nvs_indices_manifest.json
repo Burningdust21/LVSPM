@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "package_id": "lvspm-dl3dv-nvs",
+  "description": "Fixed full-benchmark DL3DV NVS selections.",
+  "provenance": {
+    "source_filename": "benchmark_fraction_full_input{16,64,128,256}_NVS.json",
+    "source_repository": "splat-attention-new",
+    "copy_policy": "Byte-for-byte copy; no reordered or regenerated indices."
+  },
+  "index_schema": {
+    "container": "JSON object keyed by scene identifier",
+    "entry": "Ordered context and target integer frame indices; all entries non-null.",
+    "runtime_policy": "Context order preserved by sampler; all stored targets retained and sorted by sampler. Camera preprocessing can reorder contexts."
+  },
+  "files": [
+    {
+      "views": 16,
+      "path": "dl3dv_nvs/16.json",
+      "bytes": 24420,
+      "scene_count": 140,
+      "target_count": {
+        "min": 3,
+        "max": 12,
+        "total": 890
+      },
+      "sha256": "6efdffe3ee3349b60ca39c21c8c5cf8fcccc1cad5912f69568969a0f605da955"
+    },
+    {
+      "views": 64,
+      "path": "dl3dv_nvs/64.json",
+      "bytes": 60646,
+      "scene_count": 140,
+      "target_count": {
+        "min": 12,
+        "max": 32,
+        "total": 3214
+      },
+      "sha256": "bcf0e3b403e884ee092a31967f79b383a904be746693c9f2c6f3debdbc841998"
+    },
+    {
+      "views": 128,
+      "path": "dl3dv_nvs/128.json",
+      "bytes": 110594,
+      "scene_count": 140,
+      "target_count": {
+        "min": 24,
+        "max": 32,
+        "total": 4363
+      },
+      "sha256": "782a1a6084b14b43745618216dd787feae8d92e90aba9fb53516ecca70ed2438"
+    },
+    {
+      "views": 256,
+      "path": "dl3dv_nvs/256.json",
+      "bytes": 202013,
+      "scene_count": 140,
+      "target_count": {
+        "min": 32,
+        "max": 32,
+        "total": 4480
+      },
+      "sha256": "8b3fc456a34af35421d57ccbb2ddf2fd21cea75c2fc5b3d2e27f26ae67266857"
+    }
+  ]
+}

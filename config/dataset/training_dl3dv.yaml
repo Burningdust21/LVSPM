@@ -1,0 +1,35 @@
+defaults:
+  - view_sampler: bounded_arbitrary
+
+name: dl3dv
+roots: [data/DL3DV-ALL-960P]
+make_baseline_1: true
+augment: true
+
+image_shape: [140, 240]
+
+baseline_epsilon: 1e-3
+max_fov: 100.0
+
+skip_bad_shape: true
+near: -1.
+far: -1.
+baseline_scale_bounds: true
+test_len: -1
+test_chunk_interval: 1
+test_times_per_scene: 1
+test_train: false
+down_scale: 8
+pose_scale_norm: false
+dataset_shape: [270, 480]
+monocues_dir: null
+target_fx: null
+target_fy: null
+pose_scale_euclidean: false
+center_scale_head: false
+devignetting_mask_path: null
+aug_color: false
+auto_rotate: false
+align_width: false
+auto_portrait: false
+sort_context: false

@@ -1,0 +1,67 @@
+# @package evaluation
+
+protocol: lvspm_evaluation_v2
+preset: null
+views: null
+dataset_root: null
+task: null
+index_path: null
+aggregation: null
+index_package:
+  root: assets/evaluation
+  manifest: config/evaluation/pose_indices_manifest.json
+  aggregate_sha256: 4e6718c31d8202d60e7c22962ba36a427c25afd7b3fc14f5040dc38d6689eea0
+
+runtime:
+  seed: 111123
+  strict_protocol: true
+  compile_model: true
+  torch_compile_recompile_limit: 32
+  transformer_stack_compile: per_block_fullgraph_static
+  attention_autocast: bfloat16
+  float32_matmul_precision: high
+
+dataset_overrides:
+  make_baseline_1: false
+  baseline_scale_bounds: false
+  pose_scale_norm: true
+  pose_scale_euclidean: true
+  center_scale_head: true
+  first_frame_norm: true
+  rotation_normal: true
+  near: 0.1
+  far: 100.0
+  augment: true
+
+checkpoints:
+  pose:
+    path: checkpoints/LVSPM_512x288.ckpt
+    step: 18500
+    sha256: 1d9b8aeca7155c90c929d42a547283f31e5b707e8793bf125ba8eb98aa20339f
+  nvs:
+    path: checkpoints/LVSPM_448x256.ckpt
+    step: 5000
+    sha256: 91e2fe4573cd6c0d61951326feba5e2012f0a50121248ecb80f52c71041a3ebd
+
+matrix:
+  dl3dv_pose:
+    task: pose
+    views: [16, 32, 64, 128, 256]
+    image_shape: [288, 512]
+    scenes: 53
+    dataset_root: data/DL3DV-Evaluation
+    index_template: assets/evaluation/dl3dv_pose/{views}.json
+    checkpoint: pose
+    aggregation: scene_mean
+  dl3dv_nvs:
+    index_manifest: config/evaluation/nvs_indices_manifest.json
+    task: nvs
+    views: [16, 64, 128, 256]
+    image_shape: [256, 448]
+    scenes: 140
+    dataset_root: data/DL3DV-ALL-960P
+    index_template: assets/evaluation/dl3dv_nvs/{views}.json
+    checkpoint: nvs
+    aggregation: scene_mean
+
+output_template: output/equitemporal/{preset}_view{views}

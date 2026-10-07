@@ -1,0 +1,88 @@
+# @package _global_
+
+defaults:
+  - override /dataset: training_dl3dv
+  - override /dataset/view_sampler: range_arbitrary
+  - override /loss: [mse, lpips, camera]
+
+compile_model: true
+wandb:
+  name: lvspm
+  tags: [lvspm]
+test:
+  eval_time_skip_steps: 5
+  compute_scores: true
+data_loader:
+  train:
+    batch_size: 1
+    num_workers: 8
+  val:
+    num_workers: 1
+  dynamic_sampler:
+    enable: true
+    total_frames_per_gpu: 256
+    possible_v: [8, 16, 32, 48, 64, 96, 96, 128, 128, 128]
+dataset:
+  near: 0.1
+  far: 100.0
+  baseline_scale_bounds: false
+  make_baseline_1: false
+  rotation_aug: false
+  roots: [data/data_list_real_obj_512]
+  image_shape: [288, 512]
+  down_scale: 4
+  augment: false
+  preloading: false
+  test_times_per_scene: 4
+  devignetting_mask_path: null
+  pose_scale_norm: true
+  rotation_normal: true
+  first_frame_norm: true
+  pose_scale_euclidean: true
+  center_scale_head: true
+  aug_color: true
+  auto_rotate: true
+  view_sampler:
+    num_context_views: 128
+    num_target_views: 128
+    max_distance_between_context_views: 512
+    min_distance_between_context_views: 256
+    initial_max_distance_between_context_views: 512
+    initial_min_distance_between_context_views: 256
+    warm_up_steps: 20000
+    randomize_context: true
+    random_select: true
+trainer:
+  val_check_interval: 200
+  max_steps: 20000
+  accumulate_grad_batches: 2
+checkpointing:
+  every_n_train_steps: 500
+loss:
+  lpips:
+    apply_after_step: 0
+    weight: 0.5
+    use_perceptual: true
+  camera:
+    weight: 0.2
+optimizer:
+  lr: 0.00004
+  grad_clip: 4.99
+  grad_clip_steps: 2000
+  weight_decay: 0.05
+  scale_lr: false
+model:
+  encoder:
+    lvspm:
+      transformer_d_head: 64
+      grad_checkpoint_every: 1
+      transformer_n_layer: 24
+      rope_freq: 100.0
+      max_rope_freq: 65
+      in_channels: 3
+    ttt_layer:
+      model_dim: 768
+      num_heads: 1
+      mini_batch_size: -1
+      ttt_base_lr: 0.01
+      inter_multi: 2

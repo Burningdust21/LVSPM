@@ -1,0 +1,14 @@
+name: range_arbitrary
+
+min_distance_between_context_views: 64
+max_distance_between_context_views: 128
+warm_up_steps: 0
+initial_min_distance_between_context_views: 64
+initial_max_distance_between_context_views: 128
+num_target_views: 32
+num_context_views: 32
+context_ids_first: true
+range_start_override: -1
+randomize_context: false
+center_context: false
+random_select: false

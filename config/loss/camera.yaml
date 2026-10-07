@@ -1,0 +1,6 @@
+camera:
+    weight: 5.0
+    weight_rot: 1.0
+    weight_trans: 1.0
+    weight_focal: 0.5
+    loss_type: l1

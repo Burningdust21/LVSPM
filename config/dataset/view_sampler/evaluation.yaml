@@ -1,0 +1,7 @@
+name: evaluation
+
+index_path: assets/evaluation_index.json
+num_context_views: 4
+full_range_sample: false
+num_target_views: -1
+randomize_context: false

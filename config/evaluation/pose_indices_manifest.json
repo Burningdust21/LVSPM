@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "package_id": "lvspm-dl3dv-pose",
+  "package_version": "1.1.0",
+  "created_on": "2026-09-04",
+  "description": "Immutable LVSPM-only equal-temporal evaluation selections.",
+  "file_count": 5,
+  "payload_bytes": 163280,
+  "aggregate_sha256": "4e6718c31d8202d60e7c22962ba36a427c25afd7b3fc14f5040dc38d6689eea0",
+  "aggregate_sha256_definition": "SHA-256 of the UTF-8 concatenation of '<file_sha256>  <package-relative-path>\\n' for all 5 payload JSON files sorted lexicographically by package-relative path; manifest.json is excluded.",
+  "index_schema": {
+    "container": "JSON object keyed by dataset scene identifier",
+    "entry": {
+      "context": "ordered list of unique, non-negative integer frame indices",
+      "target": "non-empty list of unique, non-negative integer frame indices disjoint from context"
+    },
+    "null_entries": "permitted by the loader but absent from this package",
+    "runtime_policy": "Use every stored target. Canonical files contain exactly the requested context count, so runtime full-range selection is an identity operation. Context ordering remains as stored."
+  },
+  "provenance": {
+    "packaged_from_revision": "35eb13285787568d402c0389c3f85b5f0cb77f28",
+    "original_release_addition_revision": "a4f19d20db7ac368f20d342ed7bc3cb031419dc7",
+    "source": "Byte-for-byte copies of the canonical tracked selections previously stored under assets/evaluation/<task>/.",
+    "trust_boundary": "The files and per-file hashes are authoritative release metadata. The original random seeds and complete index-generation command lineage were not recoverable from the accepted repository, so this package does not claim to regenerate the selections from raw datasets."
+  },
+  "expected_dataset_roots": {
+    "dl3dv_pose": {
+      "default": "data/DL3DV-Evaluation",
+      "schema": "<root>/test.json maps scene identifiers to relative ZIP paths; each ZIP contains transforms.json or <scene>/transforms.json and referenced image payloads."
+    }
+  },
+  "license_privacy_audit": {
+    "repository_license": "MIT; see LICENSE. The repository license does not grant rights to upstream datasets.",
+    "payload_content": [
+      "opaque dataset scene identifiers",
+      "integer context frame indices",
+      "integer target frame indices"
+    ],
+    "explicitly_excluded": [
+      "images or other dataset content",
+      "camera matrices or locations",
+      "captions or annotations",
+      "checkpoints or model outputs",
+      "filesystem paths, hostnames, credentials, or access tokens"
+    ],
+    "privacy_review": "Schema and value-shape inspection found no direct personal data or secrets. Opaque upstream scene identifiers were not decoded.",
+    "license_review": "Redistribution rights for dataset-derived selection metadata are not established by the code license. Public distributors must review and comply with the DL3DV terms.",
+    "status": "metadata_only_privacy_pass_upstream_license_review_required"
+  },
+  "files": [
+    {
+      "dataset": "DL3DV",
+      "task": "pose",
+      "views": 16,
+      "path": "dl3dv_pose/16.json",
+      "bytes": 8864,
+      "sha256": "1a38dcc99516e27a6a24c621fcaad6ae01171ee5d1c71985e4decb16ae466b09",
+      "scene_count": 53,
+      "target_count": {
+        "policy": "stored_targets_are_loaded_but_pose_auc_scores_context_pairs",
+        "min": 1,
+        "max": 6,
+        "total": 237
+      }
+    },
+    {
+      "dataset": "DL3DV",
+      "task": "pose",
+      "views": 32,
+      "path": "dl3dv_pose/32.json",
+      "bytes": 13422,
+      "sha256": "1abd3dacaeebbb20a65edc98a2729d5bd451a6561b6eb05d7915acdeb8274b50",
+      "scene_count": 53,
+      "target_count": {
+        "policy": "stored_targets_are_loaded_but_pose_auc_scores_context_pairs",
+        "min": 8,
+        "max": 13,
+        "total": 528
+      }
+    },
+    {
+      "dataset": "DL3DV",
+      "task": "pose",
+      "views": 64,
+      "path": "dl3dv_pose/64.json",
+      "bytes": 22540,
+      "sha256": "d22881d827ebe72d5133570407fb94aaf9ac2195477a8c9a0815430f17023df8",
+      "scene_count": 53,
+      "target_count": {
+        "policy": "stored_targets_are_loaded_but_pose_auc_scores_context_pairs",
+        "min": 17,
+        "max": 26,
+        "total": 1113
+      }
+    },
+    {
+      "dataset": "DL3DV",
+      "task": "pose",
+      "views": 128,
+      "path": "dl3dv_pose/128.json",
+      "bytes": 41982,
+      "sha256": "92d24860b5fdb42cf33675ba14adca752365b03ae72f8cc04cf5f27789082949",
+      "scene_count": 53,
+      "target_count": {
+        "policy": "stored_targets_are_loaded_but_pose_auc_scores_context_pairs",
+        "min": 32,
+        "max": 32,
+        "total": 1696
+      }
+    },
+    {
+      "dataset": "DL3DV",
+      "task": "pose",
+      "views": 256,
+      "path": "dl3dv_pose/256.json",
+      "bytes": 76472,
+      "sha256": "12a47669430944d660e11ba37697747bd09d55006b197729cd19a33157b47fec",
+      "scene_count": 53,
+      "target_count": {
+        "policy": "stored_targets_are_loaded_but_pose_auc_scores_context_pairs",
+        "min": 32,
+        "max": 32,
+        "total": 1696
+      }
+    }
+  ]
+}

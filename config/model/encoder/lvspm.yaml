@@ -1,0 +1,26 @@
+name: lvspm
+
+shim_patch_size: 8
+
+lvspm:
+  patch_size: 8
+  in_channels: 3
+  transformer_d: 768
+  transformer_d_head: 64
+  transformer_n_layer: 24
+  grad_checkpoint_every: -1
+  use_flashatt: true
+  qk_norm: true
+  fix_attention: false
+  rope_freq: 100.0
+  max_rope_freq: 65
+  compile_model: true
+  
+ttt_layer:
+  model_dim: 768
+  num_heads: 1
+  mini_batch_size: -1
+  ttt_base_lr: 0.01
+  inter_multi: 2
+  decouple_weight_norm: true
+  use_muon: true
